@@ -6,11 +6,11 @@
 #    By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/03/29 18:48:52 by iugolin          ###   ########.fr        #
+#    Updated: 2022/03/29 20:43:59 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fract_ol
+NAME = fractol
 
 LIBFT = ./libft/libft.a
 
@@ -20,13 +20,13 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEADER = fract_ol.h
+HEADER = fractol.h
 
 RM = @rm -rf
 
 SRCS_DIR = sources/
 
-SRCS_FILES = fract_ol.c
+SRCS_FILES = fractol.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
