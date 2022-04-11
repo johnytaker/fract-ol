@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"memory": "c",
+		"stdint.h": "c"
+	}
+}
