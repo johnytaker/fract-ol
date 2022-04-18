@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/09 17:56:12 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/18 16:15:30 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdint.h>
+# include <mlx.h>
 # include "./mlx/mlx.h"
 # include "./libft/libft.h"
 
 # define HEIGHT	1000
 # define WIDTH	1000
-# define COLOR_TUNDORA	0x444444
+# define COLOR_TUNDORA	0x55555
 
 typedef struct s_image		t_image;
 typedef struct s_complex	t_complex;
@@ -59,19 +60,19 @@ struct s_fractol
 	int			src_line;
 	int			dst_line;
 	int			color_shift;
-	int			(*formula)(struct s_fractol *fractol);
+	int			formula;
 };
 
-struct s_formula
-{
-	char	*fractol_name;
-	int		(*formula)(t_fractol *fractol);
-};
+// struct s_formula
+// {
+// 	char	*fractol_name;
+// 	int		(*formula)(t_fractol *fractol);
+// };
 
 struct s_color
 {
 	int8_t	channel[4];
-}
+};
 
 
 void	print_error(char *str);
