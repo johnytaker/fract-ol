@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:12:44 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/09 15:16:38 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:12:39 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "fractol.h"
 
 
 void	print_error(char *str)

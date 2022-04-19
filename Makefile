@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/04/09 18:00:59 by iugolin          ###   ########.fr        #
+#    Updated: 2022/04/19 16:42:20 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,56 +20,63 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEADER = fractol.h
+INCLUDES_PATH = ./includes/
+
+INCLUDES = $(INCLUDES_PATH)fractol.h
 
 RM = @rm -rf
 
-SRCS_DIR = sources/
+SRCS_DIR = ./sources/
 
-SRCS_FILES =	mandelbrot.c	\
-				print_utils.c	
+OBJS_DIR = ./objects/
 
-# fractol.c
+SRCS_FILES = 	color.c			\
+				draw_utils.c	\
+				fractol_utils.c	\
+				fractol.c		\
+				image_utils.c	\
+				mandelbrot.c	\
+				print_utils.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
-OBJS_FILES = $(SRCS:%.c=%.o)
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS_FILES:.c=.o))
 
 # $(OBJS_DIR):
 # 	@mkdir -p $(OBJS_DIR)
 
-all : lib mlx $(NAME)
+all : lib temp mlx $(NAME)
 
 lib :
-	make -C libft
+	make -C ./libft
+
+temp :
+	@mkdir -p ./objects/
 
 mlx :
 	make -C mlx
 
-$(NAME) : $(OBJS_FILES)
-	$(CC) $(CFLAGS) $(OBJS_FILES) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME) : $(OBJS)
+	$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 # $(OBJS_FILES): $(OBJS_DIR)/%.o: %.c $(INCLUDES) $(LIBFT)
 # 	@mkdir -p $(@D)
 # 	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -c $< -o $@
 
-%.o: %.c $(HEADER) $(LIBFT) $(MLX) Makefile
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCLUDES) $(LIBFT) $(MLX) Makefile
+	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -Imlx -c $< -o $@
 
+.PHONY : all clean fclean re
 
 clean :
-	$(RM) $(OBJS_FILES)
+	$(RM) $(OBJS_DIR)
 	make clean -C libft
-	make clean -C mlx
 	@echo "fract-ol clean done"
 
 fclean :
-	$(RM) $(OBJS_FILES)
+	$(RM) $(OBJS_DIR)
 	$(RM) $(NAME)
 	make fclean -C libft
-	make clean -C mlx
 	@echo "fract-ol fclean done"
 
 re : fclean all
-
-.PHONY : all clean fclean re

@@ -3,50 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:41 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/09 13:22:16 by iugolin          ###   ########.fr       */
+/*   Created: 2022/04/19 16:31:53 by iugolin           #+#    #+#             */
+/*   Updated: 2022/04/19 18:00:10 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "fractol.h"
 
-void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
+void	check_parameters(int argc, char **argv)
 {
-	char	*dst;
-
-	dst = data->address + (y * data->line_length
-		+ x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	if (argc < )
 }
-
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_image	img;
-	int		x_len;
-	int		y_len;
-	int		color;
+	t_fractol	*fractol;
+	void		*mlx;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1024, 768, "fractol");
-	img.image = mlx_new_image(mlx, 1024, 768);
-	img.address = mlx_get_data_addr(img.image, &img.bits_per_pixel, \
-		&img.line_length, &img.endian);
-	y_len = 250;
-	color = 0x00FF0000;
-	while (y_len)
-	{
-		x_len = 250;
-		while (x_len)
-		{
-			my_mlx_pixel_put(&img, x_len, y_len, color++);
-			x_len--;
-		}
-		y_len--;
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.image, 0, 0);
+	fractol = init_fractol("mandelbrot", mlx);
+	draw_fractal(fractol);
 	mlx_loop(mlx);
+	return (0);
 }
