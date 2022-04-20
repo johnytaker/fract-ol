@@ -6,13 +6,23 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:39:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/19 17:50:38 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/20 20:09:42 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	check_fractol()
+static int	choose_fractal(t_fractol *fractol)
+{
+	int	iter;
+	
+	iter = 0;
+	if (fractol->fractol_name[0] == 'm')
+		iter = mandelbrot(fractol);
+	else if (fractol->fractol_name[0] == 'j')
+		iter = julia(fractol);
+	return (iter);
+}
 
 static void	draw_fractal_part(t_fractol *fractol)
 {
@@ -28,7 +38,7 @@ static void	draw_fractal_part(t_fractol *fractol)
 		while (x < WIDTH)
 		{
 			fractol->complex_num.re = fractol->min.re + x * fractol->factor.re;
-			fractol->formula = mandelbrot(fractol);
+			fractol->formula = choose_fractal(fractol);
 			color = get_color(fractol->formula, fractol);
 			my_mlx_pixel_put(fractol, x, y, color);
 			x++;

@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/19 17:41:31 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/20 21:01:06 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdint.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
 # define HEIGHT	1000
 # define WIDTH	1000
-# define COLOR_TUNDORA	0x55555
+# define COLOR_TUNDORA	0x999999
 
 typedef struct s_image		t_image;
 typedef struct s_complex	t_complex;
@@ -61,6 +61,7 @@ struct s_fractol
 	int			dst_line;
 	int			color_shift;
 	int			formula;
+	char		*fractol_name;
 };
 
 struct s_color
@@ -72,7 +73,7 @@ t_color		get_color(int iter, t_fractol *fractol);
 
 t_complex	init_complex(double re, double im);
 
-t_fractol	*init_fractol(char *fractol_name, void *mlx)ж
+t_fractol	*init_fractol(char *fractol_name);
 
 t_image		*init_image(void *mlx);
 
@@ -80,8 +81,12 @@ void		my_mlx_pixel_put(t_fractol *fractol, int x, int y, t_color color);
 
 int			mandelbrot(t_fractol *fractol);
 
+int			julia(t_fractol *fractol);
+
 void		draw_fractal(t_fractol *fractol);
 
 void		print_error(char *str);
+
+int			close_window(t_fractol *fractol);
 
 #endif

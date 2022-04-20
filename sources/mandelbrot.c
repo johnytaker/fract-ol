@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:09:38 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/19 16:39:45 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/20 20:01:25 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	mandelbrot(t_fractol *fractol)
 	{
 		z = init_complex(
 			pow(z.re, 2.0) - pow(z.im, 2.0) + fractol->complex_num.re,
-			2.0 * z.re * z.im +fractol->complex_num.im);
+			2.0 * z.re * z.im + fractol->complex_num.im);
 		iter++;
 	}
 	return (iter);

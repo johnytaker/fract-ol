@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:27:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/19 16:34:06 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/20 16:49:24 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_image	*init_image(void *mlx)
 	image->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (image->image == NULL)
 		print_error("error image init");
-	image->address = mlx_get_data_addr(image->image, &image->bits_per_pixel,
-		&image->line_length, &image->endian);
+	image->address = mlx_get_data_addr(image->image,
+		&image->bits_per_pixel, &image->line_length, &image->endian);
 	return (image);
 }
 
@@ -31,7 +31,8 @@ void	my_mlx_pixel_put(t_fractol *fractol, int x, int y, t_color color)
 {
 	int	i;
 
-	i = (x * fractol->image->bits_per_pixel / 8) + (y * fractol->image->line_length);
+	i = (x * fractol->image->bits_per_pixel / 8) +
+		(y * fractol->image->line_length);
 	fractol->image->address[i] = color.channel[3];
 	fractol->image->address[++i] = color.channel[2];
 	fractol->image->address[++i] = color.channel[1];

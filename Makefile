@@ -6,7 +6,7 @@
 #    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/04/19 16:42:20 by iugolin          ###   ########.fr        #
+#    Updated: 2022/04/20 21:00:18 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,16 +34,15 @@ SRCS_FILES = 	color.c			\
 				draw_utils.c	\
 				fractol_utils.c	\
 				fractol.c		\
+				hooks.c			\
 				image_utils.c	\
 				mandelbrot.c	\
+				julia.c			\
 				print_utils.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS_FILES:.c=.o))
-
-# $(OBJS_DIR):
-# 	@mkdir -p $(OBJS_DIR)
 
 all : lib temp mlx $(NAME)
 
@@ -54,14 +53,10 @@ temp :
 	@mkdir -p ./objects/
 
 mlx :
-	make -C mlx
+	make -C ./mlx
 
 $(NAME) : $(OBJS)
 	$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-# $(OBJS_FILES): $(OBJS_DIR)/%.o: %.c $(INCLUDES) $(LIBFT)
-# 	@mkdir -p $(@D)
-# 	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -c $< -o $@
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCLUDES) $(LIBFT) $(MLX) Makefile
 	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -Imlx -c $< -o $@

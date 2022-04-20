@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 22:27:57 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/20 16:28:15 by iugolin          ###   ########.fr       */
+/*   Created: 2022/04/20 19:58:41 by iugolin           #+#    #+#             */
+/*   Updated: 2022/04/20 20:06:26 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fractol.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	julia(t_fractol *fractol)
 {
-	unsigned char	*temp_s1;
-	unsigned char	*temp_s2;
+	int		iter;
+	t_complex	z;
 
-	temp_s1 = (unsigned char *)s1;
-	temp_s2 = (unsigned char *)s2;
-	while (*temp_s1 && (*temp_s1 == *temp_s2))
+	iter = 0;
+	z = init_complex(fractol->complex_num.re, fractol->complex_num.im);
+	while (pow(z.re, 2.0) + pow(z.im, 2.0) <= 4
+		&& iter < fractol->max_iter)
 	{
-		temp_s1++;
-		temp_s2++;
+		z = init_complex(
+			pow(z.re, 2.0) - pow(z.im, 2.0) + fractol->const_complex_num.re,
+			2.0 * z.re * z.im + fractol->const_complex_num.im);
+		iter++;
 	}
-	if (*temp_s1 == '\0')
-		return (0);
-	else
-		return (1);
+	return (iter);
 }
