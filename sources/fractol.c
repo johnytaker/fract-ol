@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
@@ -33,7 +33,11 @@ int	main(int argc, char **argv)
 	if (fractol)
 	{
 		draw_fractal(fractol);
-		mlx_hook(fractol->window, 17, 0, close_window, &fractol);
+		mlx_hook(fractol->window, 17, 0, close_window, fractol);
+		// mlx_mouse_hook(fractol->window, julia_motion, fractol);
+		mlx_hook(fractol->window, 4, 0, zoom, fractol);
+		if (fractol->fractol_name[0] == 'j')
+			mlx_hook(fractol->window, 6, 0, julia_motion, fractol);
 		mlx_loop(fractol->mlx);
 	}
 	return (0);

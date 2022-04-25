@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/20 21:01:06 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/25 20:45:55 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,20 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdint.h>
-// # include <mlx.h>
+# include <mlx.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
-# define HEIGHT	1000
-# define WIDTH	1000
+# define HEIGHT			700
+# define WIDTH			700
+
 # define COLOR_TUNDORA	0x999999
+
+# define LEFT_CLICK		1
+# define RIGHT_CLICK	2
+# define MIDDLE_CLICK	3
+# define SCROLL_UP		4
+# define SCROLL_DOWN	5
 
 typedef struct s_image		t_image;
 typedef struct s_complex	t_complex;
@@ -57,11 +64,10 @@ struct s_fractol
 	t_complex	factor;
 	t_complex	complex_num;
 	t_complex	const_complex_num;
-	int			src_line;
-	int			dst_line;
 	int			color_shift;
 	int			formula;
 	char		*fractol_name;
+	// double		scale;
 };
 
 struct s_color
@@ -88,5 +94,9 @@ void		draw_fractal(t_fractol *fractol);
 void		print_error(char *str);
 
 int			close_window(t_fractol *fractol);
+
+int		zoom(int mousecode, int x, int y, t_fractol *fractol);
+
+int		julia_motion(int x, int y, t_fractol *fractol);
 
 #endif

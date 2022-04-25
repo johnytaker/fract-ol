@@ -6,7 +6,7 @@
 #    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/04/20 21:00:18 by iugolin          ###   ########.fr        #
+#    Updated: 2022/04/25 20:32:45 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX = ./mlx/libmlx.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -O3 -Ofast -Wall -Wextra -Werror
 
 INCLUDES_PATH = ./includes/
 
