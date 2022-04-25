@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:18:45 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/25 20:43:30 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/25 21:46:15 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@ t_complex	init_complex(double re, double im)
 
 static void	set_limits(t_fractol *fractol)
 {
-	fractol->max_iter = 100;
+	fractol->max_iter = 300;
 	fractol->min = init_complex(-2.0, -2.0);
 	fractol->max.re = 2.0;
 	fractol->max.im = fractol->min.im +
 		(fractol->max.re - fractol->min.re);
 	fractol->const_complex_num = init_complex(-0.4, 0.6);
 	fractol->color_shift = 0;
-	// fractol->scale = WIDTH / (fractol->max.re - fractol->min.re);
-	// fractol->scale = 2;
 }
 
 t_fractol	*init_fractol(char *fractol_name)

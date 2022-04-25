@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/25 20:45:55 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/25 21:46:19 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ struct s_fractol
 	int			color_shift;
 	int			formula;
 	char		*fractol_name;
-	// double		scale;
 };
 
 struct s_color
