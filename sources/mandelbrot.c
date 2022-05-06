@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:09:38 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/20 20:01:25 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/29 15:56:05 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,5 @@ int	mandelbrot(t_fractol *fractol)
 	}
 	return (iter);
 }
+
+

@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"memory": "c",
-		"stdint.h": "c"
+		"stdint.h": "c",
+		"iterator": "c"
 	}
 }

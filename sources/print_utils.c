@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:12:44 by iugolin           #+#    #+#             */
-/*   Updated: 2022/04/22 16:21:48 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/04/29 16:04:44 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 void	print_error(char *str)
 {
 	ft_putendl_fd(str, 2);
-	exit(1);
+	exit(EXIT_FAILURE);
 }

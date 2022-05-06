@@ -6,7 +6,7 @@
 #    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/04/25 20:32:45 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/06 18:41:34 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,13 @@ OBJS_DIR = ./objects/
 
 SRCS_FILES = 	color.c			\
 				draw_utils.c	\
+				events.c		\
 				fractol_utils.c	\
 				fractol.c		\
 				hooks.c			\
 				image_utils.c	\
 				mandelbrot.c	\
+				move_keyboard.c	\
 				julia.c			\
 				print_utils.c
 
