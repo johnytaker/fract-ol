@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/06 18:42:00 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/15 19:30:02 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
-# define HEIGHT			1000
-# define WIDTH			1000
+# define HEIGHT			500
+# define WIDTH			500
 
-# define MAX_ITER		500
+# define MAX_ITER		256
 
+# define MIDDLE_BUTTON	3
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5
 
@@ -38,6 +39,7 @@
 # define KEY_S			1
 # define KEY_D			2
 # define KEY_W			13
+# define KEY_SPACE		49
 
 typedef struct s_image		t_image;
 typedef struct s_complex	t_complex;
@@ -90,7 +92,7 @@ t_color		get_color(t_fractol *fractol);
 
 t_complex	init_complex(double re, double im);
 
-t_fractol	*init_fractol(char *fractol_name);
+t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im);
 
 t_image		*init_image(void *mlx);
 
@@ -103,6 +105,7 @@ int			julia(t_fractol *fractol);
 void		draw_fractal(t_fractol *fractol);
 
 void		print_error(char *str);
+void		usage(void);
 
 int			julia_motion(int x, int y, t_fractol *fractol);
 

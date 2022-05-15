@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:39:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/01 16:41:28 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/15 19:04:54 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	choose_fractal(t_fractol *fractol)
 	int	iter;
 	
 	iter = 0;
-	if (fractol->fractol_name[0] == 'm')
+	if (fractol->fractol_name[0] == 'M')
 		iter = mandelbrot(fractol);
-	else if (fractol->fractol_name[0] == 'j')
+	else if (fractol->fractol_name[0] == 'J')
 		iter = julia(fractol);
 	return (iter);
 }

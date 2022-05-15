@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/06 18:43:23 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/15 19:32:36 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ int	move_keys(int keycode, t_fractol *fractol)
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(fractol);
 	return (0);
+}
+
+int	julia_motion(int mousecode, int x, int y, t_fractol *fractol)
+{
+	if (mousecode == MIDDLE_BUTTON)
+		
 }

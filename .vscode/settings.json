@@ -2,6 +2,8 @@
 	"files.associations": {
 		"memory": "c",
 		"stdint.h": "c",
-		"iterator": "c"
+		"iterator": "c",
+		"ratio": "c",
+		"chrono": "c"
 	}
 }
