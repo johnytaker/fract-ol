@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 16:32:57 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/16 07:34:52 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/18 17:23:01 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,3 @@ void	zoom_out(t_fractol *fractol)
 	fractol->max.im += mouse.re * 0.1;
 }
 
-// int	julia_motion(int x, int y, t_fractol *fractol)
-// {
-// 	fractol->const_complex_num = init_complex(
-// 		4 * ((double)x / WIDTH - 0.5),
-// 		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
-// 	draw_fractal(fractol);
-// 	return (0);
-// }

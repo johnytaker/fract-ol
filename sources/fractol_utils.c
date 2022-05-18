@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:18:45 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/16 10:37:47 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/18 22:28:12 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,22 @@ t_complex	init_complex(double re, double im)
 	return (complex);
 }
 
+// static t_color	set_colors(void)
+// {
+// 	t_color	color;
+
+// 	color.first_set.red = 9;
+// 	color.first_set.green = 30;
+// 	color.first_set.blue = 10;
+// 	color.second_set.red = 30;
+// 	color.second_set.green = 150;
+// 	color.second_set.blue = 2;
+// 	color.third_set.red = 110;
+// 	color.third_set.green = 1;
+// 	color.third_set.blue = 4;
+// 	return (color);
+// }
+
 static void	set_limits(t_fractol *fractol)
 {
 	fractol->max_iter = MAX_ITER;
@@ -29,7 +45,8 @@ static void	set_limits(t_fractol *fractol)
 	fractol->max.im = fractol->min.im +
 		(fractol->max.re - fractol->min.re);
 	fractol->julia_move = 1;
-	fractol->color_change = 0;
+	// fractol->color_sets = set_colors();
+	// fractol->current_color_set = fractol->color_sets.first_set;
 }
 
 t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im)

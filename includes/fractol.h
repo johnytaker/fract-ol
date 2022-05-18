@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/17 16:58:38 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/18 22:27:52 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@
 # define KEY_D			2
 # define KEY_W			13
 # define KEY_SPACE		49
+# define KEY_C			8
 
 typedef struct s_image		t_image;
 typedef struct s_complex	t_complex;
+typedef struct s_palette	t_palette;
+typedef struct s_color		t_color;
 typedef struct s_fractol	t_fractol;
-typedef struct s_vec3		t_vec3;
 
 struct s_image
 {
@@ -80,28 +82,28 @@ struct s_fractol
 	t_complex	const_complex_num;
 	int			iter;
 	int			max_iter;
-	int			color_change;
 	int8_t		julia_move;
 	char		*fractol_name;
+	// t_color		color_sets;
+	// t_palette	current_color_set;
 };
 
-struct s_vec3
+struct s_palette
 {
-	float	x;
-	float	y;
-	float	z;
+	int	red;
+	int	green;
+	int	blue;
 };
 
+struct s_color
+{
+	t_palette	first_set;
+	t_palette	second_set;
+	t_palette	third_set;
+};
 
-
-// struct s_color
-// {
-// 	int8_t	channel[4];
-// };
 
 int			get_color(t_fractol *fractol);
-// t_vec3 		new_vec3(float x, float y, float z);
-// t_vec3		palette(float t, t_vec3 a, t_vec3 b, t_vec3 c, t_vec3 d);
 
 t_complex	init_complex(double re, double im);
 
@@ -109,9 +111,7 @@ t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im);
 
 t_image		*init_image(void *mlx);
 
-// void		my_mlx_pixel_put(t_fractol *fractol, int x, int y, t_color color);
 void		my_mlx_pixel_put(t_image *image_old, int x, int y, int color);
-// void		my_mlx_pixel_put(t_fractol *fractol, int x, int y, t_vec3 palette);
 
 int			mandelbrot(t_fractol *fractol);
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/05/16 10:25:46 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/18 17:23:55 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS_FILES = 	color.c			\
 				events.c		\
 				fractol_utils.c	\
 				fractol.c		\
-				hooks.c			\
+				zoom.c			\
 				image_utils.c	\
 				mandelbrot.c	\
 				move_keyboard.c	\
