@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
+#    By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/05/06 18:41:34 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/16 10:25:46 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,16 +46,16 @@ SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS_FILES:.c=.o))
 
-all : lib temp mlx $(NAME)
+all : mlx lib temp $(NAME)
 
 lib :
 	make -C ./libft
 
-temp :
-	@mkdir -p ./objects/
-
 mlx :
 	make -C ./mlx
+
+temp :
+	@mkdir -p ./objects/
 
 $(NAME) : $(OBJS)
 	$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
@@ -63,7 +63,7 @@ $(NAME) : $(OBJS)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCLUDES) $(LIBFT) $(MLX) Makefile
 	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -Imlx -c $< -o $@
 
-.PHONY : all clean fclean re
+.PHONY : all lib mlx temp clean fclean re
 
 clean :
 	$(RM) $(OBJS_DIR)

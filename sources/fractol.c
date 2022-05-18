@@ -15,7 +15,7 @@
 static t_fractol	*check_parameters_and_init(int argc, char **argv)
 {
 	t_fractol	*fractol;
-	
+
 	fractol = NULL;
 	if (!ft_strcmp("-m", argv[1]) && argc == 2)
 		fractol = init_fractol("Mandelbrot", 0, 0);
@@ -36,11 +36,11 @@ int	main(int argc, char **argv)
 	if (fractol)
 	{
 		draw_fractal(fractol);
-		mlx_hook(fractol->window, 17, 0, close_window, fractol);
-		mlx_hook(fractol->window, 4, 0, zoom, fractol);
-		mlx_hook(fractol->window, 2, 0, move_keys, fractol);
+		mlx_hook(fractol->window, ON_DESTROY, 0, close_window, fractol);
+		mlx_hook(fractol->window, ON_MOUSEDOWN, 0, zoom, fractol);
+		mlx_hook(fractol->window, ON_KEYDOWN, 0, move_keys, fractol);
 		if (fractol->fractol_name[0] == 'J')
-			mlx_hook(fractol->window, 6, 0, julia_motion, fractol);
+			mlx_hook(fractol->window, ON_MOUSEMOVE, 0, julia_motion, fractol);
 		mlx_loop(fractol->mlx);
 	}
 	return (0);

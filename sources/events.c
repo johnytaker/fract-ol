@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/15 19:32:36 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/16 08:49:04 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,24 @@ int	move_keys(int keycode, t_fractol *fractol)
 		move_left(fractol);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(fractol);
+	else if (keycode == KEY_SPACE)
+	{
+		if (fractol->julia_move == 1)
+			fractol->julia_move = 0;
+		else
+			fractol->julia_move = 1;
+	}
 	return (0);
 }
 
-int	julia_motion(int mousecode, int x, int y, t_fractol *fractol)
+int	julia_motion(int x, int y, t_fractol *fractol)
 {
-	if (mousecode == MIDDLE_BUTTON)
-		
+	if (fractol->julia_move == 1)
+	{
+		fractol->const_complex_num = init_complex(
+			4 * ((double)x / WIDTH - 0.5),
+			4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
+		draw_fractal(fractol);
+	}
+	return (0);
 }
