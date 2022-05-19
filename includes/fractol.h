@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/18 22:27:52 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/19 21:40:36 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ struct s_fractol
 	int			max_iter;
 	int8_t		julia_move;
 	char		*fractol_name;
-	// t_color		color_sets;
-	// t_palette	current_color_set;
+	t_color		*color_sets;
+	t_palette	*current_color_set;
 };
 
 struct s_palette
@@ -97,9 +97,9 @@ struct s_palette
 
 struct s_color
 {
-	t_palette	first_set;
-	t_palette	second_set;
-	t_palette	third_set;
+	t_palette	*first_set;
+	t_palette	*second_set;
+	t_palette	*third_set;
 };
 
 

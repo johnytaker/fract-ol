@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/18 22:21:10 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/19 21:46:25 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,15 @@ int	move_keys(int keycode, t_fractol *fractol)
 		else
 			fractol->julia_move = 1;
 	}
-	// else if (keycode == KEY_C)
-	// {
-	// 	if (fractol->current_color_set.red == )
-	// }
+	else if (keycode == KEY_C)
+	{
+		if (fractol->current_color_set == fractol->color_sets->first_set)
+			fractol->current_color_set = fractol->color_sets->second_set;
+		else if (fractol->current_color_set == fractol->color_sets->second_set)
+			fractol->current_color_set = fractol->color_sets->third_set;
+		else if (fractol->current_color_set == fractol->color_sets->third_set)
+			fractol->current_color_set = fractol->color_sets->first_set;
+	}
 	return (0);
 }
 
