@@ -17,7 +17,9 @@ static t_fractol	*check_parameters_and_init(int argc, char **argv)
 	t_fractol	*fractol;
 
 	fractol = NULL;
-	if (!ft_strcmp("-m", argv[1]) && argc == 2)
+	if(!ft_strcmp("-b", argv[1]) && argc == 2)
+		fractol = init_fractol("Burning ship", 0 , 0);
+	else if (!ft_strcmp("-m", argv[1]) && argc == 2)
 		fractol = init_fractol("Mandelbrot", 0, 0);
 	else if (!ft_strcmp("-j", argv[1]) && argc == 4)
 		fractol = init_fractol("Julia", ft_atoi(argv[2]), ft_atoi(argv[3]));

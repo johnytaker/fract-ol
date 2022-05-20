@@ -6,7 +6,7 @@
 #    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/05/18 17:23:55 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/20 02:48:57 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS_DIR = ./sources/
 
 OBJS_DIR = ./objects/
 
-SRCS_FILES = 	color.c			\
+SRCS_FILES = 	burning_ship.c	\
+				color.c			\
 				draw_utils.c	\
 				events.c		\
 				fractol_utils.c	\

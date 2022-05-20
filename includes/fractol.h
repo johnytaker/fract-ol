@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/19 21:40:36 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/20 03:19:37 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <string.h>
 # include <stdint.h>
 # include <mlx.h>
-// # include <X11/keysym.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+
 /*	Window properties	*/
 # define HEIGHT			800
 # define WIDTH			800
@@ -102,7 +102,6 @@ struct s_color
 	t_palette	*third_set;
 };
 
-
 int			get_color(t_fractol *fractol);
 
 t_complex	init_complex(double re, double im);
@@ -114,8 +113,8 @@ t_image		*init_image(void *mlx);
 void		my_mlx_pixel_put(t_image *image_old, int x, int y, int color);
 
 int			mandelbrot(t_fractol *fractol);
-
 int			julia(t_fractol *fractol);
+int			burning_ship(t_fractol *fractol);
 
 void		draw_fractal(t_fractol *fractol);
 
@@ -124,8 +123,7 @@ void		usage(void);
 
 int			julia_motion(int x, int y, t_fractol *fractol);
 
-void		zoom_in(t_fractol *fractol);
-void		zoom_out(t_fractol *fractol);
+int			zoom_func(int x, int y, double zoom, t_fractol *fractol);
 int			zoom(int mousecode, int x, int y, t_fractol *fractol);
 
 int			close_window(t_fractol *fractol);

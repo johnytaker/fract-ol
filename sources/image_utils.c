@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:27:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/18 17:22:29 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/20 03:17:21 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,23 @@ t_image	*init_image(void *mlx)
 
 	image = (t_image *)malloc(sizeof(t_image));
 	if (!image)
-		print_error("error image init");
+		print_error("Error image init");
 	image->image = mlx_new_image(mlx, WIDTH, HEIGHT);
-	if (image->image == NULL)
-		print_error("error image init");
+	if (!image->image)
+		print_error("Error image init");
 	image->address = mlx_get_data_addr(image->image,
-		&image->bits_per_pixel, &image->line_length, &image->endian);
+			&image->bits_per_pixel, &image->line_length, &image->endian);
+	if (!image->address)
+		print_error("Error address init");
 	return (image);
 }
 
 void	my_mlx_pixel_put(t_image *image_old, int x, int y, int color)
 {
-	// int	i;
-
-	// i = (x * fractol->image->bits_per_pixel / 8) +
-	// 	(y * fractol->image->line_length);
-	// fractol->image->address[i] = color.channel[3];
-	// fractol->image->address[i + 1] = color.channel[2];
-	// fractol->image->address[i + 2] = color.channel[1];
-	// fractol->image->address[i + 3] = color.channel[0];
-
 	char	*dst;
-	
-	dst = image_old->address + (y * image_old->line_length + x * (image_old->bits_per_pixel / 8));
+
+	dst = image_old->address + \
+		(y * image_old->line_length + \
+		x * (image_old->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-
-

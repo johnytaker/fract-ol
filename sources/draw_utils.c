@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:39:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/18 21:30:39 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/20 03:08:14 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,23 @@ static int	choose_fractal(t_fractol *fractol)
 	int	iter;
 
 	iter = 0;
-	if (fractol->fractol_name[0] == 'M')
+	if (fractol->fractol_name[0] == 'B')
+		iter = burning_ship(fractol);
+	else if (fractol->fractol_name[0] == 'M')
 		iter = mandelbrot(fractol);
 	else if (fractol->fractol_name[0] == 'J')
 		iter = julia(fractol);
 	return (iter);
 }
 
-static void	draw_fractal_part(t_fractol *fractol)
+static void	draw_function(t_fractol *fractol)
 {
 	int			y;
 	int			x;
 
 	fractol->factor = init_complex(
-		(fractol->max.re - fractol->min.re) / (WIDTH - 1),
-		(fractol->max.im - fractol->min.im) / (HEIGHT - 1));
+			(fractol->max.re - fractol->min.re) / (WIDTH - 1),
+			(fractol->max.im - fractol->min.im) / (HEIGHT - 1));
 	y = 0;
 	while (y < HEIGHT)
 	{
@@ -59,9 +61,8 @@ static void	draw_fractal_part(t_fractol *fractol)
 
 void	draw_fractal(t_fractol *fractol)
 {
-	draw_fractal_part(fractol);
+	draw_function(fractol);
 	swap_img(fractol);
 	mlx_put_image_to_window(fractol->mlx, fractol->window,
 		fractol->image_new->image, 0, 0);
-
 }
