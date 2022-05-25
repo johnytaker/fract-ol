@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/26 19:31:17 by iugolin           #+#    #+#              #
-#    Updated: 2022/03/27 01:09:26 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/26 00:58:48 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ HEADER = libft.h
 
 RM = @rm -f
 
-# SRCS_DIR = sources/
 
 SRCS =	ft_isalpha.c		ft_isdigit.c	\
 		ft_isalnum.c		ft_isascii.c	\
@@ -41,8 +40,6 @@ SRCS =	ft_isalpha.c		ft_isdigit.c	\
 		ft_putstr_fd.c		ft_putendl_fd.c	\
 		ft_putnbr_fd.c
 
-# SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
-
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
@@ -52,16 +49,16 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	ar -crs $@ $?
-	echo "libft.a updated"
+	@echo "libft.a updated"
 
 clean :
 	$(RM) $(OBJS)
-	@echo "libft.a clean done"
+	@echo "libft clean done"
 
 fclean :
 	$(RM) $(OBJS)
 	$(RM) $(NAME)
-	@echo "libft.a fclean done"
+	@echo "libft fclean done"
 
 re : fclean all
 

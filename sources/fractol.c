@@ -30,6 +30,23 @@ static t_fractol	*check_parameters_and_init(int argc, char **argv)
 	return (fractol);
 }
 
+int	get_coordinates(int x, int y, t_fractol *fractol)
+{
+	char	*x_coordinate = ft_strjoin(ft_strdup("x: "), ft_itoa(x));
+	char	*y_coordinate = ft_strjoin(ft_strdup("y: "), ft_itoa(y));
+	mlx_string_put(fractol->mlx, fractol->window,
+		620, 110, ACID_GREEN, x_coordinate);
+	// mlx_string_put(fractol->mlx, fractol->window,
+	// 	720, 110, ACID_GREEN, ft_itoa(x));
+	mlx_string_put(fractol->mlx, fractol->window,
+		620, 130, ACID_GREEN, y_coordinate);
+	// mlx_string_put(fractol->mlx, fractol->window,
+	// 	720, 130, ACID_GREEN, ft_itoa(y));
+	free(x_coordinate);
+	free(y_coordinate);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_fractol	*fractol;
@@ -41,6 +58,7 @@ int	main(int argc, char **argv)
 		mlx_hook(fractol->window, ON_DESTROY, 0, close_window, fractol);
 		mlx_hook(fractol->window, ON_MOUSEDOWN, 0, zoom, fractol);
 		mlx_hook(fractol->window, ON_KEYDOWN, 0, move_keys, fractol);
+		mlx_hook(fractol->window, ON_MOUSEMOVE, 0, get_coordinates, fractol);
 		if (fractol->fractol_name[0] == 'J')
 			mlx_hook(fractol->window, ON_MOUSEMOVE, 0, julia_motion, fractol);
 		mlx_loop(fractol->mlx);

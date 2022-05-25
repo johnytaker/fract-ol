@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/20 03:08:26 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:43:28 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	zoom(int mousecode, int x, int y, t_fractol *fractol)
 {
 	if (mousecode == SCROLL_UP)
 		zoom_func(x, y, 1.20, fractol);
-	else
+	else if (mousecode == SCROLL_DOWN)
 		zoom_func(x, y, 0.80, fractol);
 	draw_fractal(fractol);
 	return (0);
@@ -50,6 +50,12 @@ int	move_keys(int keycode, t_fractol *fractol)
 		move_left(fractol);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(fractol);
+	else if (keycode == KEY_C)
+		change_color(fractol);
+	else if (keycode == KEY_PLUS || keycode == KEY_PLUS_NP)
+		fractol->max_iter += 8;
+	else if (keycode == KEY_MINUS || keycode == KEY_MINUS_NP)
+		fractol->max_iter -= 8;
 	else if (keycode == KEY_SPACE)
 	{
 		if (fractol->julia_move == 1)
@@ -57,17 +63,21 @@ int	move_keys(int keycode, t_fractol *fractol)
 		else
 			fractol->julia_move = 1;
 	}
-	else if (keycode == KEY_C)
-		change_color(fractol);
 	draw_fractal(fractol);
 	return (0);
 }
+
+// void	get_coordinates(int x, int y, t_fractol *fractol)
+// {
+// 	fractol->x = x;
+// 	fractol->y = y;
+// }
 
 int	julia_motion(int x, int y, t_fractol *fractol)
 {
 	if (fractol->julia_move == 1)
 	{
-		fractol->const_complex_num = init_complex(
+		fractol->k = init_complex(
 				4 * ((double)x / WIDTH - 0.5),
 				4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
 		draw_fractal(fractol);

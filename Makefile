@@ -6,7 +6,7 @@
 #    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/05/20 02:48:57 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/26 00:58:16 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX = ./mlx/libmlx.a
 
 CC = cc
 
-CFLAGS = -O3 -Ofast -Wall -Wextra -Werror
+CFLAGS = -O3 -Wall -Wextra -Werror
 
 INCLUDES_PATH = ./includes/
 
@@ -60,6 +60,7 @@ temp :
 
 $(NAME) : $(OBJS)
 	$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "fractol updated"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCLUDES) $(LIBFT) $(MLX) Makefile
 	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -Imlx -c $< -o $@
@@ -68,13 +69,15 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCLUDES) $(LIBFT) $(MLX) Makefile
 
 clean :
 	$(RM) $(OBJS_DIR)
-	make clean -C libft
+	@make clean -C libft
+	@make clean -C mlx
 	@echo "fract-ol clean done"
 
 fclean :
 	$(RM) $(OBJS_DIR)
 	$(RM) $(NAME)
-	make fclean -C libft
+	@make fclean -C libft
+	@make clean -C mlx
 	@echo "fract-ol fclean done"
 
 re : fclean all

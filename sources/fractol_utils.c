@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:18:45 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/20 03:12:42 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:41:25 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static t_palette	*set_palette(int red, int green, int blue)
 {
 	t_palette	*palette;
 
-	palette = malloc(sizeof(t_palette *));
+	palette = (t_palette *)malloc(sizeof(t_palette));
+	if (!palette)
+		print_error("Allocate memory error\n");
 	palette->red = red;
 	palette->green = green;
 	palette->blue = blue;
@@ -36,10 +38,12 @@ static t_color	*set_colors(void)
 {
 	t_color	*color;
 
-	color = malloc(sizeof(t_color *));
-	color->first_set = set_palette(9, 30, 7);
+	color = (t_color *)malloc(sizeof(t_color));
+	if (!color)
+		print_error("Allocate memory error\n");
+	color->first_set = set_palette(110, 1, 4);
 	color->second_set = set_palette(30, 150, 2);
-	color->third_set = set_palette(110, 1, 4);
+	color->third_set = set_palette(9, 30, 7);
 	return (color);
 }
 
@@ -61,7 +65,7 @@ t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im)
 
 	fractol = (t_fractol *)malloc(sizeof(t_fractol));
 	if (!fractol)
-		print_error("Error fractol init");
+		print_error("Allocate memory error\n");
 	fractol->mlx = mlx_init();
 	fractol->fractol_name = fractol_name;
 	fractol->window = mlx_new_window(
@@ -70,9 +74,9 @@ t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im)
 	fractol->image_new = init_image(fractol->mlx);
 	set_limits(fractol);
 	if (jul_c_re != 0 && jul_c_im != 0)
-		fractol->const_complex_num = init_complex(
+		fractol->k = init_complex(
 				(double)jul_c_re * 0.001, (double)jul_c_im * 0.001);
 	else
-		fractol->const_complex_num = init_complex(-0.7, 0.27015);
+		fractol->k = init_complex(-0.7, 0.27015);
 	return (fractol);
 }

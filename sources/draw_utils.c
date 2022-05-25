@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:39:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/20 03:08:14 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:22:11 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static void	draw_function(t_fractol *fractol)
 	y = 0;
 	while (y < HEIGHT)
 	{
-		fractol->complex_num.im = fractol->max.im - y * fractol->factor.im;
+		fractol->c.im = fractol->max.im - y * fractol->factor.im;
 		x = 0;
 		while (x < WIDTH)
 		{
-			fractol->complex_num.re = fractol->min.re + x * fractol->factor.re;
+			fractol->c.re = fractol->min.re + x * fractol->factor.re;
 			fractol->iter = choose_fractal(fractol);
 			my_mlx_pixel_put(fractol->image_old, x, y, get_color(fractol));
 			x++;
@@ -65,4 +65,5 @@ void	draw_fractal(t_fractol *fractol)
 	swap_img(fractol);
 	mlx_put_image_to_window(fractol->mlx, fractol->window,
 		fractol->image_new->image, 0, 0);
+	put_str_data(fractol);
 }
