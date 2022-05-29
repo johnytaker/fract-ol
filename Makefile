@@ -6,7 +6,7 @@
 #    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/05/26 00:58:16 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/29 17:01:14 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,17 +50,17 @@ OBJS = $(addprefix $(OBJS_DIR), $(SRCS_FILES:.c=.o))
 all : mlx lib temp $(NAME)
 
 lib :
-	make -C ./libft
+	@make -C ./libft
 
 mlx :
-	make -C ./mlx
+	@make -C ./mlx
 
 temp :
 	@mkdir -p ./objects/
 
 $(NAME) : $(OBJS)
 	$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "fractol updated"
+	@echo "\nfractol updated\n"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCLUDES) $(LIBFT) $(MLX) Makefile
 	$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -Imlx -c $< -o $@

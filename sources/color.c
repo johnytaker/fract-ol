@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:08:07 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/26 00:11:47 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 15:31:37 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int	get_color(t_fractol *fractol)
 			pow((1 - t), 2) * pow(t, 2) * 255);
 	blue = (int)(fractol->current_color_set->blue * \
 			pow((1 - t), 3) * t * 255);
-	// red = (int)(fractol->);
 	return (0 << 24 | red << 16 | green << 8 | blue);
 }

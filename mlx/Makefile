@@ -16,7 +16,7 @@ all: $(NOM)
 $(NOM):	$(OBJ)
 	ar -r $(NOM) $(OBJ)
 	ranlib $(NOM)
-	@echo "libmlx.a updated"
+	@echo "\nlibmlx.a updated\n"
 
 clean:
 	@rm -f $(NOM) $(OBJ) *~

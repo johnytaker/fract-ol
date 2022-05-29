@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 16:32:57 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/20 03:20:20 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 18:20:31 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ int	zoom_func(int x, int y, double zoom, t_fractol *fractol)
 	fractol->min.im = interpolate(mouse.im, fractol->min.im, interpolation);
 	fractol->max.re = interpolate(mouse.re, fractol->max.re, interpolation);
 	fractol->max.im = interpolate(mouse.im, fractol->max.im, interpolation);
-	draw_fractal(fractol);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:39:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/26 01:22:11 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 16:17:45 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	choose_fractal(t_fractol *fractol)
 
 static void	draw_function(t_fractol *fractol)
 {
-	int			y;
-	int			x;
+	int	y;
+	int	x;
 
 	fractol->factor = init_complex(
 			(fractol->max.re - fractol->min.re) / (WIDTH - 1),

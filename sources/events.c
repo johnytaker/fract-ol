@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/26 01:43:28 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 16:04:56 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,6 @@ int	move_keys(int keycode, t_fractol *fractol)
 	draw_fractal(fractol);
 	return (0);
 }
-
-// void	get_coordinates(int x, int y, t_fractol *fractol)
-// {
-// 	fractol->x = x;
-// 	fractol->y = y;
-// }
 
 int	julia_motion(int x, int y, t_fractol *fractol)
 {
