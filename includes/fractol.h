@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/26 01:13:02 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 21:42:33 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define KEY_MINUS		27
 # define KEY_PLUS_NP	69
 # define KEY_MINUS_NP	78
+# define KEY_K			40
 /*		String color	*/
 # define ACID_GREEN		0x00FF00
 /*		Structures		*/
@@ -57,6 +58,7 @@ typedef struct s_complex	t_complex;
 typedef struct s_palette	t_palette;
 typedef struct s_color		t_color;
 typedef struct s_fractol	t_fractol;
+typedef struct s_julset		t_julset;
 
 struct s_image
 {
@@ -83,15 +85,14 @@ struct s_fractol
 	t_complex	max;
 	t_complex	factor;
 	t_complex	c;
-	t_complex	k;
+	t_complex	*k;
 	int			iter;
 	int			max_iter;
 	int			julia_move;
 	char		*fractol_name;
 	t_color		*color_sets;
 	t_palette	*current_color_set;
-	int			x;
-	int			y;
+	t_julset	*julia_sets;
 };
 
 struct s_palette
@@ -107,6 +108,15 @@ struct s_color
 	t_palette	*second_set;
 	t_palette	*third_set;
 };
+
+struct s_julset
+{
+	t_complex	*first;
+	t_complex	*second;
+	t_complex	*third;
+	t_complex	*fourth;
+};
+
 /*								Burning ship							*/
 int			burning_ship(t_fractol *fractol);
 /*								Color									*/
@@ -120,7 +130,7 @@ int			move_keys(int keycode, t_fractol *fractol);
 int			julia_motion(int x, int y, t_fractol *fractol);
 /*								Fractol utils							*/
 t_complex	init_complex(double re, double im);
-t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im);
+t_fractol	*init_fractol(char *fractol_name, int jul_k_re, int jul_k_im);
 /*								Image utils								*/
 t_image		*init_image(void *mlx);
 void		put_str_data(t_fractol *fractol);
@@ -139,4 +149,9 @@ void		print_error(char *str);
 void		usage(void);
 /*								Zoom									*/
 int			zoom_func(int x, int y, double zoom, t_fractol *fractol);
+
+t_complex	*julia_k(double k_re, double k_im);
+t_julset	*set_juliasets(void);
+void		julia_set_changer(t_fractol *fractol);
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:27:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 18:32:41 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 21:07:01 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	put_str_data(t_fractol *fractol)
 		ft_itoa(fractol->c.re * 1000), ft_itoa(fractol->c.im * 1000));
 	if (fractol->fractol_name[0] == 'J')
 	{
-		put_str_julia_k(fractol, ft_itoa(fractol->k.re * 1000), \
-			ft_itoa(fractol->k.im * 1000));
+		put_str_julia_k(fractol, ft_itoa(fractol->k->re * 1000), \
+			ft_itoa(fractol->k->im * 1000));
 	}
 }
 

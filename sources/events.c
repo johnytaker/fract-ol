@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 16:04:56 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 21:42:48 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ static void	change_color(t_fractol *fractol)
 		fractol->current_color_set = fractol->color_sets->first_set;
 }
 
+static void	julia_move_swap(t_fractol *fractol)
+{
+	if (fractol->julia_move == 1)
+		fractol->julia_move = 0;
+	else
+		fractol->julia_move = 1;
+}
+
 int	move_keys(int keycode, t_fractol *fractol)
 {
 	if (keycode == KEY_ESC)
@@ -52,29 +60,14 @@ int	move_keys(int keycode, t_fractol *fractol)
 		move_right(fractol);
 	else if (keycode == KEY_C)
 		change_color(fractol);
+	else if (keycode == KEY_K)
+		julia_set_changer(fractol);
 	else if (keycode == KEY_PLUS || keycode == KEY_PLUS_NP)
 		fractol->max_iter += 8;
 	else if (keycode == KEY_MINUS || keycode == KEY_MINUS_NP)
 		fractol->max_iter -= 8;
 	else if (keycode == KEY_SPACE)
-	{
-		if (fractol->julia_move == 1)
-			fractol->julia_move = 0;
-		else
-			fractol->julia_move = 1;
-	}
+		julia_move_swap(fractol);
 	draw_fractal(fractol);
-	return (0);
-}
-
-int	julia_motion(int x, int y, t_fractol *fractol)
-{
-	if (fractol->julia_move == 1)
-	{
-		fractol->k = init_complex(
-				4 * ((double)x / WIDTH - 0.5),
-				4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
-		draw_fractal(fractol);
-	}
 	return (0);
 }

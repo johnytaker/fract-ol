@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:18:45 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/26 01:41:25 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/29 20:44:41 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ static void	set_limits(t_fractol *fractol)
 	fractol->max.re = 2.0;
 	fractol->max.im = fractol->min.im + \
 		(fractol->max.re - fractol->min.re);
-	fractol->julia_move = 1;
+	fractol->julia_move = 0;
 	fractol->color_sets = set_colors();
 	fractol->current_color_set = fractol->color_sets->first_set;
+	fractol->julia_sets = set_juliasets();
 }
 
-t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im)
+t_fractol	*init_fractol(char *fractol_name, int jul_k_re, int jul_k_im)
 {
 	t_fractol	*fractol;
 
@@ -73,10 +74,12 @@ t_fractol	*init_fractol(char *fractol_name, int jul_c_re, int jul_c_im)
 	fractol->image_old = init_image(fractol->mlx);
 	fractol->image_new = init_image(fractol->mlx);
 	set_limits(fractol);
-	if (jul_c_re != 0 && jul_c_im != 0)
-		fractol->k = init_complex(
-				(double)jul_c_re * 0.001, (double)jul_c_im * 0.001);
+	if (jul_k_re != 0 && jul_k_im != 0)
+	{
+		fractol->k->re = (double)jul_k_re * 0.001;
+		fractol->k->im = (double)jul_k_im * 0.001;
+	}
 	else
-		fractol->k = init_complex(-0.7, 0.27015);
+		fractol->k = fractol->julia_sets->first;
 	return (fractol);
 }

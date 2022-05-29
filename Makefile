@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+         #
+#    By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 17:00:43 by iugolin           #+#    #+#              #
-#    Updated: 2022/05/29 17:01:14 by iugolin          ###   ########.fr        #
+#    Updated: 2022/05/29 21:36:09 by iugolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS_FILES = 	burning_ship.c	\
 				mandelbrot.c	\
 				move_keyboard.c	\
 				julia.c			\
+				julia_motion.c	\
 				print_utils.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
