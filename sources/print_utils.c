@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:12:44 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 19:47:44 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:44:32 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,13 @@ void	print_error(char *str)
 
 void	usage(void)
 {
-	ft_putendl_fd("USAGE:\n\n\
+	ft_putendl_fd("\nUSAGE:\n\n\
 ./fractol [flag] \n\n\
 Available flags:\n\n\
-  -b	Burning ship\n\
+  -b 	Burning ship\n\
   -m	Mandelbrot\n\
   -j	Julia * \n\n\
 * you can draw Julia set with your own constant (k.re, k.im):\n\
-  ./fractol -j [first](x1000) [second](x1000)\n\
-  Example:\n\
-  ./fractol -j 294 -14", 2);
+  ./fractol -j [first](x1000) [second](x1000)\n\n", 2);
 	exit(EXIT_FAILURE);
 }

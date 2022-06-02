@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:14:52 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 16:15:24 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/30 14:38:37 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static t_fractol	*check_parameters_and_init(int argc, char **argv)
 	t_fractol	*fractol;
 
 	fractol = NULL;
-	if (!ft_strcmp("-b", argv[1]) && argc == 2)
+	if (!ft_strcmp(argv[1], "-b") && argc == 2)
 		fractol = init_fractol("Burning ship", 0, 0);
-	else if (!ft_strcmp("-m", argv[1]) && argc == 2)
+	else if (!ft_strcmp(argv[1], "-m") && argc == 2)
 		fractol = init_fractol("Mandelbrot", 0, 0);
-	else if (!ft_strcmp("-j", argv[1]) && argc == 4)
+	else if (!ft_strcmp(argv[1], "-j") && argc == 4)
 		fractol = init_fractol("Julia", ft_atoi(argv[2]), ft_atoi(argv[3]));
-	else if (!ft_strcmp("-j", argv[1]) && argc == 2)
+	else if (!ft_strcmp(argv[1], "-j") && argc == 2)
 		fractol = init_fractol("Julia", 0, 0);
 	else
 		usage();

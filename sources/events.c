@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:24:16 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 21:42:48 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:45:38 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int	zoom(int mousecode, int x, int y, t_fractol *fractol)
 		zoom_func(x, y, 1.20, fractol);
 	else if (mousecode == SCROLL_DOWN)
 		zoom_func(x, y, 0.80, fractol);
+	// mlx_clear_window(fractol->mlx, fractol->window);
 	draw_fractal(fractol);
 	return (0);
 }
 
-static void	change_color(t_fractol *fractol)
+static void	color_selector(t_fractol *fractol)
 {
 	if (fractol->current_color_set == fractol->color_sets->first_set)
 		fractol->current_color_set = fractol->color_sets->second_set;
@@ -38,7 +39,7 @@ static void	change_color(t_fractol *fractol)
 		fractol->current_color_set = fractol->color_sets->first_set;
 }
 
-static void	julia_move_swap(t_fractol *fractol)
+static void	julia_move_selector(t_fractol *fractol)
 {
 	if (fractol->julia_move == 1)
 		fractol->julia_move = 0;
@@ -59,15 +60,16 @@ int	move_keys(int keycode, t_fractol *fractol)
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(fractol);
 	else if (keycode == KEY_C)
-		change_color(fractol);
+		color_selector(fractol);
+	else if (keycode == KEY_SPACE)
+		julia_move_selector(fractol);
 	else if (keycode == KEY_K)
-		julia_set_changer(fractol);
+		julia_set_selector(fractol);
 	else if (keycode == KEY_PLUS || keycode == KEY_PLUS_NP)
 		fractol->max_iter += 8;
 	else if (keycode == KEY_MINUS || keycode == KEY_MINUS_NP)
 		fractol->max_iter -= 8;
-	else if (keycode == KEY_SPACE)
-		julia_move_swap(fractol);
+	// mlx_clear_window(fractol->mlx, fractol->window);
 	draw_fractal(fractol);
 	return (0);
 }

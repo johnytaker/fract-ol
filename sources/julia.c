@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:58:41 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 21:13:44 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:29:35 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ t_julset	*set_juliasets(void)
 	julia_sets = (t_julset *)malloc((sizeof(t_julset)));
 	if (!julia_sets)
 		print_error("Allocate memory error\n");
-	julia_sets->first = set_julia_k(-0.7, 0.27015);
+	julia_sets->first = set_julia_k(-0.7, 0.27);
 	julia_sets->second = set_julia_k(0.294, -0.014);
 	julia_sets->third = set_julia_k(-0.4, 0.6);
 	julia_sets->fourth = set_julia_k(-0.8, 0.156);
 	return (julia_sets);
 }
 
-void	julia_set_changer(t_fractol *fractol)
+void	julia_set_selector(t_fractol *fractol)
 {
 	if (fractol->k == fractol->julia_sets->first)
 		fractol->k = fractol->julia_sets->second;
@@ -65,5 +65,7 @@ void	julia_set_changer(t_fractol *fractol)
 	else if (fractol->k == fractol->julia_sets->third)
 		fractol->k = fractol->julia_sets->fourth;
 	else if (fractol->k == fractol->julia_sets->fourth)
+		fractol->k = fractol->julia_sets->first;
+	else
 		fractol->k = fractol->julia_sets->first;
 }

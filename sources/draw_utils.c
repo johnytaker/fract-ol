@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iugolin <iugolin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:39:21 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 16:17:45 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:04:44 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	swap_img(t_fractol *fractol)
+static void	swap_image(t_fractol *fractol)
 {
 	t_image	*temp;
 
@@ -62,7 +62,7 @@ static void	draw_function(t_fractol *fractol)
 void	draw_fractal(t_fractol *fractol)
 {
 	draw_function(fractol);
-	swap_img(fractol);
+	swap_image(fractol);
 	mlx_put_image_to_window(fractol->mlx, fractol->window,
 		fractol->image_new->image, 0, 0);
 	put_str_data(fractol);

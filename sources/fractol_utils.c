@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:18:45 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 20:44:41 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/06/02 01:12:30 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ static t_color	*set_colors(void)
 	if (!color)
 		print_error("Allocate memory error\n");
 	color->first_set = set_palette(110, 1, 4);
-	color->second_set = set_palette(30, 150, 2);
-	color->third_set = set_palette(9, 30, 7);
+	color->second_set = set_palette(30, 60, 2);
+	color->third_set = set_palette(9, 30, 3);
+	// color->first_set = set_palette(110, 1, 4);
+	// color->second_set = set_palette(30, 150, 2);
+	// color->third_set = set_palette(9, 30, 7);
 	return (color);
 }
 
@@ -75,10 +78,8 @@ t_fractol	*init_fractol(char *fractol_name, int jul_k_re, int jul_k_im)
 	fractol->image_new = init_image(fractol->mlx);
 	set_limits(fractol);
 	if (jul_k_re != 0 && jul_k_im != 0)
-	{
-		fractol->k->re = (double)jul_k_re * 0.001;
-		fractol->k->im = (double)jul_k_im * 0.001;
-	}
+		fractol->k = set_julia_k((double)jul_k_re * 0.001,
+				(double)jul_k_im * 0.001);
 	else
 		fractol->k = fractol->julia_sets->first;
 	return (fractol);

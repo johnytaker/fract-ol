@@ -6,7 +6,7 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:04:53 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/29 21:42:33 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:56:49 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void		draw_fractal(t_fractol *fractol);
 int			close_window(t_fractol *fractol);
 int			zoom(int mousecode, int x, int y, t_fractol *fractol);
 int			move_keys(int keycode, t_fractol *fractol);
-int			julia_motion(int x, int y, t_fractol *fractol);
 /*								Fractol utils							*/
 t_complex	init_complex(double re, double im);
 t_fractol	*init_fractol(char *fractol_name, int jul_k_re, int jul_k_im);
@@ -137,6 +136,11 @@ void		put_str_data(t_fractol *fractol);
 void		my_mlx_pixel_put(t_image *image_old, int x, int y, int color);
 /*								Julia									*/
 int			julia(t_fractol *fractol);
+t_complex	*set_julia_k(double k_re, double k_im);
+t_julset	*set_juliasets(void);
+void		julia_set_selector(t_fractol *fractol);
+/*								Julia Motion							*/
+int			julia_motion(int x, int y, t_fractol *fractol);
 /*								Mandelbrot								*/
 int			mandelbrot(t_fractol *fractol);
 /*								Move keyboard							*/
@@ -149,9 +153,4 @@ void		print_error(char *str);
 void		usage(void);
 /*								Zoom									*/
 int			zoom_func(int x, int y, double zoom, t_fractol *fractol);
-
-t_complex	*julia_k(double k_re, double k_im);
-t_julset	*set_juliasets(void);
-void		julia_set_changer(t_fractol *fractol);
-
 #endif
