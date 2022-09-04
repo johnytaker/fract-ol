@@ -6,28 +6,27 @@
 /*   By: iugolin <iugolin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:14:52 by iugolin           #+#    #+#             */
-/*   Updated: 2022/05/30 14:38:37 by iugolin          ###   ########.fr       */
+/*   Updated: 2022/09/04 22:59:37 by iugolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static t_fractol	*check_parameters_and_init(int argc, char **argv)
+static t_fractol	*check_parameters_and_init(int argc, char **argv, t_fractol **fractol)
 {
-	t_fractol	*fractol;
-
-	fractol = NULL;
+	if (argc < 2)
+		usage();
 	if (!ft_strcmp(argv[1], "-b") && argc == 2)
-		fractol = init_fractol("Burning ship", 0, 0);
+		*fractol = init_fractol("Burning ship", 0, 0);
 	else if (!ft_strcmp(argv[1], "-m") && argc == 2)
-		fractol = init_fractol("Mandelbrot", 0, 0);
+		*fractol = init_fractol("Mandelbrot", 0, 0);
 	else if (!ft_strcmp(argv[1], "-j") && argc == 4)
-		fractol = init_fractol("Julia", ft_atoi(argv[2]), ft_atoi(argv[3]));
+		*fractol = init_fractol("Julia", ft_atoi(argv[2]), ft_atoi(argv[3]));
 	else if (!ft_strcmp(argv[1], "-j") && argc == 2)
-		fractol = init_fractol("Julia", 0, 0);
+		*fractol = init_fractol("Julia", 0, 0);
 	else
 		usage();
-	return (fractol);
+	return (*fractol);
 }
 
 static void	hooks(t_fractol *fractol)
@@ -43,7 +42,7 @@ int	main(int argc, char **argv)
 {
 	t_fractol	*fractol;
 
-	fractol = check_parameters_and_init(argc, argv);
+	fractol = check_parameters_and_init(argc, argv, &fractol);
 	if (fractol)
 	{
 		draw_fractal(fractol);
